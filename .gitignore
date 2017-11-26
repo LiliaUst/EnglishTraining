@@ -1,0 +1,14 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+/.vs
+/Web/ClientApp/dist
+/Web/wwwroot/dist
+
+
+/node_modules
+Web/wwwroot/filestorage/
+/Web/ClientApp/.idea
+/Web/ClientApp/.idea
