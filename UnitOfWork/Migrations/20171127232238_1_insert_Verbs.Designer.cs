@@ -11,9 +11,10 @@ using UstSoft.EnglishTraining.UnitOfWork;
 namespace UstSoft.EnglishTraining.UnitOfWork.Migrations
 {
     [DbContext(typeof(EnglishTrainingDbContext))]
-    partial class EnglishTrainingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171127232238_1_insert_Verbs")]
+    partial class _1_insert_Verbs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

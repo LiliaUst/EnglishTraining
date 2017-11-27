@@ -11,9 +11,10 @@ using UstSoft.EnglishTraining.UnitOfWork;
 namespace UstSoft.EnglishTraining.UnitOfWork.Migrations
 {
     [DbContext(typeof(EnglishTrainingDbContext))]
-    partial class EnglishTrainingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171127222736_1_insert_TenseVerbs_NumberVerbs_PersonVerbs")]
+    partial class _1_insert_TenseVerbs_NumberVerbs_PersonVerbs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +106,12 @@ namespace UstSoft.EnglishTraining.UnitOfWork.Migrations
                         .HasMaxLength(100);
 
                     b.Property<bool>("IsIrregular");
+
+                    b.Property<string>("PastIndefinite")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("PastParticiple")
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 

@@ -7,16 +7,12 @@ using UstSoft.EnglishTraining.UnitOfWork.Interfaces;
 
 namespace UstSoft.EnglishTraining.UnitOfWork.Entities
 {
-    public class Verb : IIdentifiable
+    public class PersonVerb : IIdentifiable
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         [Required]
-        [StringLength(100)]
-        public string InfinitiveEn { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string InfinitiveRu { get; set; }
-        public bool IsIrregular { get; set; } = false;
+        [StringLength(20)]
+        public string Name { get; set; }
     }
 }
