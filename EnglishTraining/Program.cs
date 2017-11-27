@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EnglishTraining
+namespace UstSoft.EnglishTraining.Web
 {
     public class Program
     {

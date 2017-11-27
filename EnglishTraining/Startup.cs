@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using UstSoft.EnglishTraining.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
+using UstSoft.EnglishTraining.UnitOfWork.Interfaces;
 
-namespace EnglishTraining
+namespace UstSoft.EnglishTraining.Web
 {
     public class Startup
     {
@@ -22,11 +25,17 @@ namespace EnglishTraining
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EnglishTrainingDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddHangfire(config => config.UseMemoryStorage());
+
+            services.AddScoped(typeof(IUnitOfWork), typeof(EnglishTrainingDbContext));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, EnglishTrainingDbContext englishTrainingDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -53,6 +62,12 @@ namespace EnglishTraining
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            englishTrainingDbContext.Initialize();
+
+            var testDataInitializer = new UnitOfWork.TestDataInitializer(englishTrainingDbContext);
+            testDataInitializer.Initialize();
+
         }
     }
 }

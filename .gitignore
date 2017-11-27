@@ -7,6 +7,10 @@
 /Web/ClientApp/dist
 /Web/wwwroot/dist
 
+UnitOfWork.Interfaces/obj
+UnitOfWork.Interfaces/bin
+UnitOfWork/bin
+UnitOfWork/obj
 
 /node_modules
 Web/wwwroot/filestorage/
