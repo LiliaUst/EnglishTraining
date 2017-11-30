@@ -1,0 +1,23 @@
+﻿<dx-data-grid id="gridVerbs"
+              [dataSource]="verbs"
+              keyExpr="id"
+              [selectedRowKeys]="[]">
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-sorting mode="single"></dxo-sorting>
+    <dxi-column caption="English"
+                [width]="230"
+                sortOrder="asc"
+                [allowEditing]="false"
+                [allowReordering]="false"
+                dataField="infinitiveEn"></dxi-column>
+    <dxi-column caption="Russian"
+                [width]="230"
+                [allowEditing]="false"
+                [allowReordering]="false"
+                dataField="infinitiveRu"></dxi-column>
+    <dxi-column caption="Irregular Verb"
+            [width]="100"
+            [allowEditing]="false"
+            [allowReordering]="false"
+            dataField="isIrregular"></dxi-column>
+</dx-data-grid>

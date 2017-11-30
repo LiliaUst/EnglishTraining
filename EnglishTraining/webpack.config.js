@@ -20,9 +20,15 @@ module.exports = (env) => {
                 { test: /\.ts$/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader', 'angular2-router-loader'] : '@ngtools/webpack' },
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: [ 'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { test: /\.(png|jpg|jpeg|gif|svg|)$/, use: 'url-loader?limit=25000' },
+                { test: /\.(ttf|eot|woff)$/, use: "file-loader?name=/[name].[ext]" }
+
             ]
         },
+        /*loaders: [
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.(ttf|eot|woff)$/, loader: "file-loader?name=/[name].[ext]" }
+        ],*/
         plugins: [new CheckerPlugin()]
     };
 

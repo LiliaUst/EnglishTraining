@@ -11,6 +11,12 @@ UnitOfWork.Interfaces/obj
 UnitOfWork.Interfaces/bin
 UnitOfWork/bin
 UnitOfWork/obj
+DomainServices.Interfaces/obj
+DomainServices.Interfaces/bin
+DomainServices/bin
+DomainServices/obj
+DataTransferObjects/bin
+DataTransferObjects/obj
 
 /node_modules
 Web/wwwroot/filestorage/

@@ -24,7 +24,7 @@ namespace UstSoft.EnglishTraining.UnitOfWork.Migrations
                (0, N'reach', N'достигать'), (1, N'put', N'класть'), (0, N'produce', N'производить'), (0, N'play', N'играть'),
                (1, N'pay', N'платить'), (0, N'own', N'владеть'), (0, N'open', N'открывать'), (0, N'offer', N'предлагать'),
                (0, N'need', N'нуждаться'), (0, N'move', N'двигаться'), (1, N'mean', N'иметь в виду'), (0, N'mark', N'отмечать'),
-               (1, N'make', N'создавать'), (0, N'look', N'смотреть'), (0, N'live', N'жить'), (0, N'listen', N'cлушать'),
+               (1, N'make', N'создавать'), (0, N'look', N'смотреть'), (0, N'live', N'жить'), (0, N'listen', N'слушать'),
                (0, N'like', N'нравиться'), (1, N'lie', N'лежать'), (1, N'let', N'позволять'), (1, N'leave', N'оставлять'),
                (0, N'learn', N'учиться'), (1, N'lead', N'вести'), (1, N'know', N'знать'), (1, N'keep', N'хранить'),
                (0, N'inform', N'сообщать'), (0, N'increase', N'увеличиваться'), (0, N'help', N'помогать'), (1, N'hear', N'слышать'),

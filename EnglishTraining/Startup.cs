@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using UstSoft.EnglishTraining.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using UstSoft.EnglishTraining.UnitOfWork.Interfaces;
+using UstSoft.DomainServices.Interfaces;
+using UstSoft.DomainServices;
 
 namespace UstSoft.EnglishTraining.Web
 {
@@ -30,6 +32,8 @@ namespace UstSoft.EnglishTraining.Web
 
             services.AddScoped(typeof(IUnitOfWork), typeof(EnglishTrainingDbContext));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddScoped(typeof(IVerbsService), typeof(VerbsService));
 
             services.AddMvc();
         }

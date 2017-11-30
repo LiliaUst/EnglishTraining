@@ -18,15 +18,31 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\app\components\verbs\verbs-list\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="ClientApp\app\components\verbs\verbs-list\**" />
+    <None Remove="ClientApp\app\components\verbs\verbs-list\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\verbs-list.component.ts" />
+    <None Remove="ClientApp\app\models\verbs\verbs.model.ts" />
+    <None Remove="ClientApp\app\services\verbs\verbs.resolver.ts" />
+    <None Remove="ClientApp\app\services\verbs\verbs.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DomainServices.Interfaces\DomainServices.Interfaces.csproj" />
+    <ProjectReference Include="..\DomainServices\DomainServices.csproj" />
     <ProjectReference Include="..\UnitOfWork\UnitOfWork.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\app\services\" />
+    <TypeScriptCompile Include="ClientApp\app\components\verbs\verbs.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\verbs\verbs.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\httpInterceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\verbs\verbs.resolver.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\verbs\verbs.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
