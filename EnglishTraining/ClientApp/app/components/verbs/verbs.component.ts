@@ -14,7 +14,7 @@ export class VerbsComponent {
     public tenseVerbs = TenseVerbs;
     public personVerbs = PersonVerbs;
     public numberVerbs = NumberVerbs;
-
+    showPanel: boolean = false;
 
     constructor(private route: ActivatedRoute) {
         //DevExpress.viz.currentTheme(DevExpress.devices.current(), 'light');
@@ -42,6 +42,7 @@ export class VerbsComponent {
     onVerbSelectionChange(e: any) {
         
         this.currentVerb = e.selectedRowsData[0];
+        this.showPanel = true;
         console.log(this.currentVerb);
     }
 
@@ -54,6 +55,10 @@ export class VerbsComponent {
     }
 
     onSave(e: any) {
+
+        var resultValidation = e.validationGroup.validate();
+        if (!resultValidation.isValid)
+            return;
         console.info(this.currentVerb);
     }
 }

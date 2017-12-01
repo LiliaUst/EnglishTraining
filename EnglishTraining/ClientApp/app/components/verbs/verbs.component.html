@@ -30,277 +30,297 @@
         </dx-data-grid>
     </dxi-item>
     <dxi-item [ratio]="2" class="panelVerbForm">
-        <div>
-            <div>Present Simple</div>
+        
+        <div>Present Simple</div>
 
-            <h3>English</h3>
+        <h3>English</h3>
 
-            <!-- Positive -->
-            <fieldset class="form form-inline">
-                <legend>Positive</legend>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">I / We / You / They</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)" 
-                                         name="verbEn"
-                                         (onValueChanged)="onFirstSingularValueChanged($event)"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbEn"></dx-text-box>
-                        </div>
+        <!-- Positive -->
+        <fieldset class="form form-inline">
+            <legend>Positive</legend>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="infinitiveEn">I / We / You / They</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     name="verbEn"
+                                     (onValueChanged)="onFirstSingularValueChanged($event)"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbEn">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="The field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
                     </div>
                 </div>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">She / He / It</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)" 
-                                         name="infinitiveEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbEn"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-            <!-- Negative & Question -->
-            <dx-box direction="row"
-                    width="100%">
-                <dxi-item [ratio]="1">
-                    <fieldset>
-                        <legend>Negative</legend>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">I / We / You / They</label>
-                                <label class="col-lg-2">don't</label>
-                                <div class="col-lg-5">
-                                    {{ currentVerb.infinitiveEn }}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-lg-5">She / He / It</label>
-                                <label class="col-lg-2">doesn't</label>
-                                <div class="col-lg-5">
-                                    {{ currentVerb.infinitiveEn }}
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </dxi-item>
-
-                <dxi-item [ratio]="1">
-                    <fieldset>
-                        <legend>Question</legend>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-2">Do</label>
-                                <label class="col-lg-5">I / we / you / they</label>
-                                <div class="col-lg-5">
-                                    {{ currentVerb.infinitiveEn }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-2">Does</label>
-                                <label class="col-lg-5">she / he / it</label>
-                                <div class="col-lg-5">
-                                    {{ currentVerb.infinitiveEn }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </dxi-item>
-            </dx-box>
-
-
-            <h3>Russian</h3>
-            <!-- Positive -->
-            <fieldset class="form form-inline">
-                <legend>Positive</legend>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">Я</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
-                                         name="verbEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbRu"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">Ты</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
-                                         name="infinitiveEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Singular].verbRu"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">Она / Он / Оно</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
-                                         name="infinitiveEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbRu"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">Мы</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
-                                         name="verbEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Plural].verbRu"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">Вы</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
-                                         name="infinitiveEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Plural].verbRu"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                    <div class="row">
-                        <label class="col-lg-4" for="infinitiveEn">Они</label>
-                        <div class="col-lg-8">
-                            <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
-                                         name="infinitiveEn"
-                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Plural].verbRu"></dx-text-box>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <!-- Negative & Question -->
-            <dx-box direction="row"
-                    width="100%">
-                <dxi-item [ratio]="1">
-                    <fieldset>
-                        <legend>Negative</legend>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Я</label>
-                                <label class="col-lg-2">не</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbRu }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Ты</label>
-                                <label class="col-lg-2">не</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Singular].verbRu }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Она / Он / Оно</label>
-                                <label class="col-lg-2">не</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbRu }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Мы</label>
-                                <label class="col-lg-2">не</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Plural].verbRu }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Вы</label>
-                                <label class="col-lg-2">не</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Plural].verbRu }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Они</label>
-                                <label class="col-lg-2">не</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Plural].verbRu }}
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </dxi-item>
-
-                <dxi-item [ratio]="1">
-                    <fieldset>
-                        <legend>Question</legend>
-
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Я</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbRu }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Ты</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Singular].verbRu }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Она / Он / Оно</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbRu }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Мы</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Plural].verbRu }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Вы</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Plural].verbRu }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12 col-lg-12">
-                            <div class="row">
-                                <label class="col-lg-5">Они</label>
-                                <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
-                                    {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Plural].verbRu }}<label>?</label>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </dxi-item>
-            </dx-box>
-
-
-            <div class="panelButton">
-                <dx-button text="Save" (onClick)="onSave($event)" type="success"></dx-button>
             </div>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="infinitiveEn">She / He / It</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     name="infinitiveEn"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbEn">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="The field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <!-- Negative & Question -->
+        <!--<dx-box direction="row"
+                width="100%">
+            <dxi-item [ratio]="1">
+                <fieldset>
+                    <legend>Negative</legend>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">I / We / You / They</label>
+                            <label class="col-lg-2">don't</label>
+                            <div class="col-lg-5">
+                                {{ currentVerb.infinitiveEn }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-5">She / He / It</label>
+                            <label class="col-lg-2">doesn't</label>
+                            <div class="col-lg-5">
+                                {{ currentVerb.infinitiveEn }}
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </dxi-item>
+
+            <dxi-item [ratio]="1">
+                <fieldset>
+                    <legend>Question</legend>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-2">Do</label>
+                            <label class="col-lg-5">I / we / you / they</label>
+                            <div class="col-lg-5">
+                                {{ currentVerb.infinitiveEn }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-2">Does</label>
+                            <label class="col-lg-5">she / he / it</label>
+                            <div class="col-lg-5">
+                                {{ currentVerb.infinitiveEn }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </dxi-item>
+        </dx-box>-->
+
+
+        <h3>Russian</h3>
+        <!-- Positive -->
+        <fieldset class="form form-inline">
+            <legend>Positive</legend>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="">Я</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                         [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbRu">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="The field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="">Ты</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Singular].verbRu">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="The field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="">Она / Он / Оно</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbRu">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="The field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="">Мы</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Plural].verbRu">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="The field is required"></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="">Вы</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Plural].verbRu">
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <label class="col-lg-4 required" for="">Они</label>
+                    <div class="col-lg-8">
+                        <dx-text-box *ngIf="this.isTense(this.tenseVerbs.PresentSimple)"
+                                     [(value)]="this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Plural].verbRu">
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Negative & Question -->
+        <!--<dx-box direction="row"
+                width="100%">
+            <dxi-item [ratio]="1">
+                <fieldset>
+                    <legend>Negative</legend>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Я</label>
+                            <label class="col-lg-2">не</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbRu }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Ты</label>
+                            <label class="col-lg-2">не</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Singular].verbRu }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Она / Он / Оно</label>
+                            <label class="col-lg-2">не</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbRu }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Мы</label>
+                            <label class="col-lg-2">не</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Plural].verbRu }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Вы</label>
+                            <label class="col-lg-2">не</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Plural].verbRu }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Они</label>
+                            <label class="col-lg-2">не</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Plural].verbRu }}
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </dxi-item>
+
+            <dxi-item [ratio]="1">
+                <fieldset>
+                    <legend>Question</legend>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Я</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Singular].verbRu }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Ты</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Singular].verbRu }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Она / Он / Оно</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Singular].verbRu }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Мы</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.First][this.numberVerbs.Plural].verbRu }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Вы</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Second][this.numberVerbs.Plural].verbRu }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                        <div class="row">
+                            <label class="col-lg-5">Они</label>
+                            <div class="col-lg-5" *ngIf="this.isTense(this.tenseVerbs.PresentSimple)">
+                                {{ this.currentVerb.verbForms[this.tenseVerbs.PresentSimple][this.personVerbs.Third][this.numberVerbs.Plural].verbRu }}<label>?</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </dxi-item>
+        </dx-box>-->
+
+
+        <div class="panelButton">
+            <dx-button text="Save" (onClick)="onSave($event)" type="success" [useSubmitBehavior]="true"></dx-button>
         </div>
+       
     </dxi-item>
 </dx-box>
