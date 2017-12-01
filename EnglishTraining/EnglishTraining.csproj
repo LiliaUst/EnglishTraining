@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DomainServices.Interfaces\DomainServices.Interfaces.csproj" />
     <ProjectReference Include="..\DomainServices\DomainServices.csproj" />
+    <ProjectReference Include="..\Enums\Enums.csproj" />
     <ProjectReference Include="..\UnitOfWork\UnitOfWork.csproj" />
   </ItemGroup>
 

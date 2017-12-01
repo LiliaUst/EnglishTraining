@@ -1,0 +1,16 @@
+﻿h3 {
+    font-size: 14px;
+}
+
+.panelVerbForm {
+    padding: 0 10px;
+}
+
+.panelButton {
+    text-align: right;
+    padding: 10px 0;
+}
+
+legend {
+    font-size: 14px;
+}

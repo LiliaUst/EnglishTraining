@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork.Interfaces", "UnitOfWork.Interfaces\UnitOfWork.Interfaces.csproj", "{5F36BF8F-7562-432B-AB1E-224530A79DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainServices.Interfaces", "DomainServices.Interfaces\DomainServices.Interfaces.csproj", "{2B859D15-F8A3-4D51-8D18-8D12372A7CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainServices.Interfaces", "DomainServices.Interfaces\DomainServices.Interfaces.csproj", "{2B859D15-F8A3-4D51-8D18-8D12372A7CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainServices", "DomainServices\DomainServices.csproj", "{426A2C80-8CF7-4E5E-BCAA-E8EFFA523850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainServices", "DomainServices\DomainServices.csproj", "{426A2C80-8CF7-4E5E-BCAA-E8EFFA523850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObjects", "DataTransferObjects\DataTransferObjects.csproj", "{8261024A-9641-41B1-936E-9B6BBE78F87C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTransferObjects", "DataTransferObjects\DataTransferObjects.csproj", "{8261024A-9641-41B1-936E-9B6BBE78F87C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "Enums\Enums.csproj", "{6C7256EF-471F-4FA6-BD90-8A1547D3F1A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{8261024A-9641-41B1-936E-9B6BBE78F87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8261024A-9641-41B1-936E-9B6BBE78F87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8261024A-9641-41B1-936E-9B6BBE78F87C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7256EF-471F-4FA6-BD90-8A1547D3F1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7256EF-471F-4FA6-BD90-8A1547D3F1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7256EF-471F-4FA6-BD90-8A1547D3F1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7256EF-471F-4FA6-BD90-8A1547D3F1A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

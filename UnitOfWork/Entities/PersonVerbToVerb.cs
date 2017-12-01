@@ -24,8 +24,8 @@ namespace UstSoft.EnglishTraining.UnitOfWork.Entities
         [ForeignKey("TenseVerbId")]
         public virtual TenseVerb TenseVerb { get; set; }
         [StringLength(100)]
-        public string InfinitiveEn { get; set; }
+        public string VerbEn { get; set; }
         [StringLength(100)]
-        public string InfinitiveRu { get; set; }
+        public string VerbRu { get; set; }
     }
 }

@@ -17,6 +17,8 @@ DomainServices/bin
 DomainServices/obj
 DataTransferObjects/bin
 DataTransferObjects/obj
+Enums/bin
+Enums/obj
 
 /node_modules
 Web/wwwroot/filestorage/
