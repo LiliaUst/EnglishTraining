@@ -18,3 +18,11 @@ legend {
 label {
     font-weight: normal;
 }
+
+.field-box {
+    margin-bottom: 7px;
+}
+
+.content-tab {
+    margin-top: 10px;
+}

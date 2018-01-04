@@ -36,7 +36,7 @@ namespace UstSoft.EnglishTraining.UnitOfWork.Migrations
                (0, N'cross', N'пересекать'), (0, N'cover', N'покрывать'), (1, N'come', N'приходить'), (0, N'close', N'закрывать'),
                (0, N'change', N'менять'), (0, N'carry', N'носить'), (0, N'call', N'звонить'), (1, N'build', N'строить'),
                (1, N'bring', N'приносить'), (0, N'believe', N'верить'), (1, N'begin', N'начинать'), (1, N'become', N'становиться'),
-               (0, N'be', N'быть'), (0, N'ask', N'спрашивать'), (0, N'answer', N'отвечать'), (0, N'agree', N'соглашаться'),
+               (0, N'ask', N'спрашивать'), (0, N'answer', N'отвечать'), (0, N'agree', N'соглашаться'),
                (0, N'add', N'добавлять'), (0, N'act', N'действовать')");
         }
 

@@ -1,9 +1,10 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Verb, TenseVerbs, PersonVerbs, NumberVerbs } from '../../models/verbs/verbs.model';
 import { NotificationService } from '../../services/notification.service';
 import { VerbsService } from '../../services/verbs/verbs.service';
+import { VerbTab, VerbTabId } from '../../models/verbs/verbtab';
 
 @Component({
     styleUrls: ['./verbs.component.css'],
@@ -17,6 +18,14 @@ export class VerbsComponent {
     public personVerbs = PersonVerbs;
     public numberVerbs = NumberVerbs;
     showPanel: boolean = false;
+    verbTabs: VerbTab[] = [
+        { id: 1, text: "Infinitive", content: "" },
+        { id: 2, text: "Present Simple", content: "" }
+    ];
+    currentVerbTab: number = VerbTabId.Inifinitive;
+    public verbTabId = VerbTabId;
+    selectedVerbs: any = [];
+    selectedVerb: Verb;
 
     constructor(private route: ActivatedRoute,
         private notificationService: NotificationService,   
@@ -42,10 +51,11 @@ export class VerbsComponent {
     }
 
     onVerbSelectionChange(e: any) {
-        
-        this.currentVerb = e.selectedRowsData[0];
+       
+        this.currentVerb = JSON.parse(JSON.stringify(e.selectedRowsData[0]));
+        this.selectedVerb = e.selectedRowsData[0];
+
         this.showPanel = true;
-        console.log(this.currentVerb);
     }
 
     onFirstSingularValueChanged(e: any) {
@@ -56,12 +66,16 @@ export class VerbsComponent {
             = this.currentVerb.verbForms[TenseVerbs.PresentSimple][PersonVerbs.First][NumberVerbs.Singular].verbEn;
     }
 
+    onSelectTab(e: any) {
+
+        this.currentVerbTab = e.itemData.id;
+    }
+
     onSave(e: any) {
 
         var resultValidation = e.validationGroup.validate();
         if (!resultValidation.isValid)
             return;
-        
         this.verbsService.saveVerb(this.currentVerb).subscribe(result => {
             if (!result.success) {
                 this.notificationService.notify({ messages: ["Saved failed!"], type: 'error' });
@@ -70,8 +84,11 @@ export class VerbsComponent {
 
             this.notificationService.notify({ messages: ["Saved successfully!"], type: 'success' });
             this.currentVerb.isFull = true;
+
+            Object.assign(this.selectedVerb, this.currentVerb);
         });
 
         
     }
+
 }
