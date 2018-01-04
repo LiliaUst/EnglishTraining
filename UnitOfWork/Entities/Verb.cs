@@ -18,5 +18,7 @@ namespace UstSoft.EnglishTraining.UnitOfWork.Entities
         [StringLength(100)]
         public string InfinitiveRu { get; set; }
         public bool IsIrregular { get; set; } = false;
+
+        public virtual ICollection<PersonVerbToVerb> PersonVerbToVerbs { get; set; } = new HashSet<PersonVerbToVerb>();
     }
 }

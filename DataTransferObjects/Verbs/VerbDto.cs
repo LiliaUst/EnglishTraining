@@ -10,5 +10,6 @@ namespace UstSoft.DataTransferObjects.Verbs
         public string InfinitiveEn { get; set; }
         public string InfinitiveRu { get; set; }
         public bool IsIrregular { get; set; } = false;
+        public PersonVerbToVerbDto[] PersonVerbToVerbs { get; set; } = new PersonVerbToVerbDto[0];
     }
 }

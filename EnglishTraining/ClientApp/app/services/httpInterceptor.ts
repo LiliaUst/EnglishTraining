@@ -1,6 +1,6 @@
 ﻿import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
-import { Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend } from "@angular/http"
+import { Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend, Headers } from "@angular/http"
 import { Injectable } from "@angular/core"
 import 'rxjs/add/operator/catch';
 
@@ -17,13 +17,14 @@ export class HttpInterceptor extends Http {
     }
 
     public request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
+
+        if (typeof url === 'object') { // Не учтено, если url придет как строка!
+
+            //url.headers.append('Authorization', `Bearer ${this.authenticationService.token}`);
+            url.headers.append('Content-Type', 'application/json');
+        }
         return super.request(url, options)
             .catch(this.handleError)
-    }
-
-    protected createAuthHeaders(): Headers {
-        var headers = new Headers({ 'Content-Type': 'application/json' }); //{ 'Authorization': `Bearer ${this.authenticationService.token}` });
-        return headers;
     }
 
     protected handleError(err: any) {

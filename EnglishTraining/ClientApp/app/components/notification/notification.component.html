@@ -1,0 +1,12 @@
+﻿
+<div *ngIf="this.notificationService.notificationItems.length > 0" [@animatedNotification] class="notification-overlay">
+    <div *ngFor="let notificationItem of this.notificationService.notificationItems" [ngStyle]="{'max-width.px':notificationItem.width }" [@animatedNotification] (@animatedNotification.done)="animateIn()" class="notification-content notification-{{ notificationItem.type }} notification-{{notificationItem.position}}" [attr.data-timestamp]="notificationItem.timestamp">
+        <div class="notification-icon"></div>
+        <div class="notification-message" role="alert">
+            <ul>
+                <li *ngFor="let notificationMessage of notificationItem.messages" [innerHTML]="notificationMessage">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

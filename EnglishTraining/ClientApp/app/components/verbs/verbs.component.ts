@@ -2,6 +2,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Verb, TenseVerbs, PersonVerbs, NumberVerbs } from '../../models/verbs/verbs.model';
+import { NotificationService } from '../../services/notification.service';
+import { VerbsService } from '../../services/verbs/verbs.service';
 
 @Component({
     styleUrls: ['./verbs.component.css'],
@@ -16,7 +18,9 @@ export class VerbsComponent {
     public numberVerbs = NumberVerbs;
     showPanel: boolean = false;
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute,
+        private notificationService: NotificationService,   
+        private verbsService: VerbsService) {
         //DevExpress.viz.currentTheme(DevExpress.devices.current(), 'light');
     }
 
@@ -26,8 +30,6 @@ export class VerbsComponent {
             .subscribe((data: { verbs: Verb[] }) => {
                 
                 this.verbs = data.verbs;
-                
-                //console.log(this.verbs)
             });
     }
 
@@ -59,6 +61,17 @@ export class VerbsComponent {
         var resultValidation = e.validationGroup.validate();
         if (!resultValidation.isValid)
             return;
-        console.info(this.currentVerb);
+        
+        this.verbsService.saveVerb(this.currentVerb).subscribe(result => {
+            if (!result.success) {
+                this.notificationService.notify({ messages: ["Saved failed!"], type: 'error' });
+                return;
+            }
+
+            this.notificationService.notify({ messages: ["Saved successfully!"], type: 'success' });
+            this.currentVerb.isFull = true;
+        });
+
+        
     }
 }

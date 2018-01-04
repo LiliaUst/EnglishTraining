@@ -21,6 +21,47 @@ namespace UstSoft.EnglishTraining.Controllers
             _verbsService = verbsService;
         }
 
+        [Route("saveVerb")]
+        [HttpPost]
+        public IActionResult SaveVerb([FromBody]VerbViewModel model)
+        {
+            var verbForms = new List<PersonVerbToVerbDto>();
+            foreach (var (tense, verbForm) in model.VerbForms)
+            {
+                foreach (var (person, verbForm2) in verbForm)
+                {
+                    foreach (var (number, verbForm3) in verbForm2)
+                    {
+                        verbForms.Add(new PersonVerbToVerbDto
+                        {
+                            TenseVerbId = verbForm3.TenseVerbId,
+                            PersonVerbId = verbForm3.PersonVerbId,
+                            NumberVerbId = verbForm3.NumberVerbId,
+                            Id = verbForm3.Id,
+                            VerbId = verbForm3.VerbId,
+                            VerbEn = verbForm3.VerbEn,
+                            VerbRu = verbForm3.VerbRu,
+                        });
+                    }
+                }
+            }            
+            var result = _verbsService.SaveVerb(new VerbDto
+            {
+                Id = model.Id,
+                InfinitiveRu = model.InfinitiveRu,
+                InfinitiveEn = model.InfinitiveEn,
+                IsIrregular = model.IsIrregular,
+                PersonVerbToVerbs = verbForms.ToArray(),
+            });
+
+            if (!result.Success)
+            {
+                return Json(result);
+            }
+
+            return Json(result);
+        }
+
         [Route("getVerbs")]
         [HttpGet]
         public IActionResult GetVerbs()
@@ -31,13 +72,31 @@ namespace UstSoft.EnglishTraining.Controllers
                 InfinitiveEn = dto.InfinitiveEn,
                 InfinitiveRu = dto.InfinitiveRu,
                 IsIrregular = dto.IsIrregular,
-                IsFull = false,
+                IsFull = dto.PersonVerbToVerbs.Length != 0,
                 VerbForms = CreateVerbForms(dto),
             }).ToList());
         }
 
+        private (string verbEn, string verbRu) GetPersonVerb(PersonVerbToVerbDto[] personVerbDtos, TenseVerbs tenseVerbs, PersonVerbs personVerbs, NumberVerbs numberVerbs)
+        {
+            foreach(var personVerbDto in personVerbDtos)
+            {
+                if (personVerbDto.TenseVerbId == (int)tenseVerbs && personVerbDto.PersonVerbId == (int)personVerbs && personVerbDto.NumberVerbId == (int)numberVerbs)
+                    return (verbEn: personVerbDto.VerbEn, verbRu: personVerbDto.VerbRu);
+            }
+            return (verbEn: "", verbRu: "");
+        }
         private Dictionary<int, Dictionary<int, Dictionary<int, PersonVerbsToVerbsViewModel>>> CreateVerbForms(VerbDto dto)
         {
+            var isFull = dto.PersonVerbToVerbs.Length != 0;
+
+            var verbPresentSimpleSingular1 = GetPersonVerb(dto.PersonVerbToVerbs, TenseVerbs.PresentSimple, PersonVerbs.First, NumberVerbs.Singular);
+            var verbPresentSimplePlural1 = GetPersonVerb(dto.PersonVerbToVerbs, TenseVerbs.PresentSimple, PersonVerbs.First, NumberVerbs.Plural);
+            var verbPresentSimpleSingular2 = GetPersonVerb(dto.PersonVerbToVerbs, TenseVerbs.PresentSimple, PersonVerbs.Second, NumberVerbs.Singular);
+            var verbPresentSimplePlural2= GetPersonVerb(dto.PersonVerbToVerbs, TenseVerbs.PresentSimple, PersonVerbs.Second, NumberVerbs.Plural);
+            var verbPresentSimpleSingular3 = GetPersonVerb(dto.PersonVerbToVerbs, TenseVerbs.PresentSimple, PersonVerbs.Third, NumberVerbs.Singular);
+            var verbPresentSimplePlural3= GetPersonVerb(dto.PersonVerbToVerbs, TenseVerbs.PresentSimple, PersonVerbs.Third, NumberVerbs.Plural);
+
             return new Dictionary<int, Dictionary<int, Dictionary<int, PersonVerbsToVerbsViewModel>>>
             {
                 [(int)TenseVerbs.PresentSimple] = new Dictionary<int, Dictionary<int, PersonVerbsToVerbsViewModel>>
@@ -50,8 +109,8 @@ namespace UstSoft.EnglishTraining.Controllers
                             PersonVerbId = (int)PersonVerbs.First,
                             NumberVerbId = (int)NumberVerbs.Singular,
                             VerbId = dto.Id,
-                            VerbEn = dto.InfinitiveEn,
-                            VerbRu = dto.InfinitiveRu,
+                            VerbEn = isFull ? verbPresentSimpleSingular1.verbEn : dto.InfinitiveEn,
+                            VerbRu = isFull ? verbPresentSimpleSingular1.verbRu : dto.InfinitiveRu,
                         },
                         [(int)NumberVerbs.Plural] = new PersonVerbsToVerbsViewModel
                         {
@@ -59,8 +118,8 @@ namespace UstSoft.EnglishTraining.Controllers
                             PersonVerbId = (int)PersonVerbs.First,
                             NumberVerbId = (int)NumberVerbs.Plural,
                             VerbId = dto.Id,
-                            VerbEn = dto.InfinitiveEn,
-                            VerbRu = dto.InfinitiveRu,
+                            VerbEn = isFull ? verbPresentSimplePlural1.verbEn : dto.InfinitiveEn,
+                            VerbRu = isFull ? verbPresentSimplePlural1.verbRu : dto.InfinitiveRu,
                         },
                     },
                     [(int)PersonVerbs.Second] = new Dictionary<int, PersonVerbsToVerbsViewModel>
@@ -71,8 +130,8 @@ namespace UstSoft.EnglishTraining.Controllers
                             PersonVerbId = (int)PersonVerbs.Second,
                             NumberVerbId = (int)NumberVerbs.Singular,
                             VerbId = dto.Id,
-                            VerbEn = dto.InfinitiveEn,
-                            VerbRu = dto.InfinitiveRu,
+                            VerbEn = isFull ? verbPresentSimpleSingular2.verbEn : dto.InfinitiveEn,
+                            VerbRu = isFull ? verbPresentSimpleSingular2.verbRu : dto.InfinitiveRu,
                         },
                         [(int)NumberVerbs.Plural] = new PersonVerbsToVerbsViewModel
                         {
@@ -80,8 +139,8 @@ namespace UstSoft.EnglishTraining.Controllers
                             PersonVerbId = (int)PersonVerbs.Second,
                             NumberVerbId = (int)NumberVerbs.Plural,
                             VerbId = dto.Id,
-                            VerbEn = dto.InfinitiveEn,
-                            VerbRu = dto.InfinitiveRu,
+                            VerbEn = isFull ? verbPresentSimplePlural2.verbEn : dto.InfinitiveEn,
+                            VerbRu = isFull ? verbPresentSimplePlural2.verbRu : dto.InfinitiveRu,
                         },
                     },
                     [(int)PersonVerbs.Third] = new Dictionary<int, PersonVerbsToVerbsViewModel>
@@ -92,8 +151,8 @@ namespace UstSoft.EnglishTraining.Controllers
                             PersonVerbId = (int)PersonVerbs.Third,
                             NumberVerbId = (int)NumberVerbs.Singular,
                             VerbId = dto.Id,
-                            VerbEn = dto.InfinitiveEn + "s",
-                            VerbRu = dto.InfinitiveRu,
+                            VerbEn = isFull ? verbPresentSimpleSingular3.verbEn : dto.InfinitiveEn + "s",
+                            VerbRu = isFull ? verbPresentSimpleSingular3.verbRu : dto.InfinitiveRu,
                         },
                         [(int)NumberVerbs.Plural] = new PersonVerbsToVerbsViewModel
                         {
@@ -101,8 +160,8 @@ namespace UstSoft.EnglishTraining.Controllers
                             PersonVerbId = (int)PersonVerbs.Third,
                             NumberVerbId = (int)NumberVerbs.Plural,
                             VerbId = dto.Id,
-                            VerbEn = dto.InfinitiveEn,
-                            VerbRu = dto.InfinitiveRu,
+                            VerbEn = isFull ? verbPresentSimplePlural3.verbEn : dto.InfinitiveEn,
+                            VerbRu = isFull ? verbPresentSimplePlural3.verbRu : dto.InfinitiveRu,
                         },
                     },
                 }

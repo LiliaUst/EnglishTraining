@@ -319,7 +319,7 @@
 
 
         <div class="panelButton">
-            <dx-button text="Save" (onClick)="onSave($event)" type="success" [useSubmitBehavior]="true"></dx-button>
+            <dx-button text="Save" (onClick)="onSave($event)" type="success" [useSubmitBehavior]="true" [disabled]="!this.showPanel"></dx-button>
         </div>
        
     </dxi-item>

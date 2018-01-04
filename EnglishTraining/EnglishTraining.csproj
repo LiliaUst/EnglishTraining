@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
   </ItemGroup>
 
@@ -26,7 +27,10 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\verbs-list.component.ts" />
+    <None Remove="ClientApp\app\models\basevalidation.ts" />
+    <None Remove="ClientApp\app\models\verbs\verb.result.ts" />
     <None Remove="ClientApp\app\models\verbs\verbs.model.ts" />
+    <None Remove="ClientApp\app\services\notification.service.ts" />
     <None Remove="ClientApp\app\services\verbs\verbs.resolver.ts" />
     <None Remove="ClientApp\app\services\verbs\verbs.service.ts" />
   </ItemGroup>
@@ -40,8 +44,11 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\verbs\verbs.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\basevalidation.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\verbs\verb.result.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\verbs\verbs.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\httpInterceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\notification.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\verbs\verbs.resolver.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\verbs\verbs.service.ts" />
   </ItemGroup>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace UstSoft.EnglishTraining.Web.ViewModel.Verbs
+﻿namespace UstSoft.DataTransferObjects.Verbs
 {
-    public class PersonVerbsToVerbsViewModel
+    public class PersonVerbToVerbDto
     {
         public int? Id { get; set; }
         public int VerbId { get; set; }
