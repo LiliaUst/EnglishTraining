@@ -15,7 +15,6 @@ namespace UstSoft.EnglishTraining.UnitOfWork
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=OneMove;Integrated Security=True;MultipleActiveResultSets=True;");
             base.OnConfiguring(optionsBuilder);
         }
 
