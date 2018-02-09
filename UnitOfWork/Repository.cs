@@ -18,7 +18,7 @@ namespace UstSoft.EnglishTraining.UnitOfWork
             Context = unitOfWork as EnglishTrainingDbContext;
 
             if (Context == null)
-                throw new InvalidOperationException("UnitOfWork of the type OneMoveDbContext should be used while a entity framework data access are used.");
+                throw new InvalidOperationException("UnitOfWork of the type EnglishTrainingDbContext should be used while a entity framework data access are used.");
         }
     }
 
